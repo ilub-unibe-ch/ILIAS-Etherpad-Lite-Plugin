@@ -17,50 +17,54 @@
     $("#mycolorpickersave").css({"padding":"2px","min-width":"70px"});
     $("#mycolorpickercancel").css({"padding":"2px","min-width":"70px"});
     /** Always hide Button for embedLinks (direct Link in Ilias should be used instaed) **/
-    $("#embedlink").hide();
+    $("li[data-key='embed']").hide();
     /** Hide Settings Button (Settings are made in Ilias with tab settings) **/
-    $("#settingslink").hide();
+    $("li[data-key='settings']").hide();
     /** Hide export doku wiki (comment this out if this is wanted) **/
-    $("#exportdokuwiki").hide();
-    $("#importexportlink").removeClass("grouped-left");
-    $("#timesliderlink").removeClass("grouped-middle").addClass("grouped-left");
+    $("li[data-key='import_export']").hide();
+    $("li[data-key='import_export']").children().removeClass("grouped-left");
+    $("li[data-key='showTimeSlider']").children().removeClass("grouped-middle").addClass("grouped-left");
     $("li[data-key='import_export']").after("<li class='separator'></li><li class='separator'></li>");
 
     if(parameters["showStyleBlock"] != "true")
     {
-        $("#bold").hide();
-        $("#italic").hide();
-        $("#underline").hide();
-        $("#strikethrough").hide();
+        $("li[data-key='bold']").hide();
+        $("li[data-key='italic']").hide();
+        $("li[data-key='underline']").hide();
+        $("li[data-key='strikethrough']").hide();
     }
     if(parameters["showListBlock"] != "true")
     {
-        $("#oderedlist").hide();
-        $("#unoderedlist").hide();
-        $("#indent").hide();
-        $("#outdent").hide();
+        $("li[data-key='insertorderedlist']").hide();
+        $("li[data-key='insertunorderedlist']").hide();
+        $("li[data-key='indent']").hide();
+        $("li[data-key='outdent']").hide();
     }
     if(parameters["showRedoBlock"] != "true")
     {
-        $("#undo").hide();
-        $("#redo").hide();
+        $("li[data-key='undo']").hide();
+        $("li[data-key='redo']").hide();
     }
     if(parameters["showColorBlock"] != "true")
     {
-        $("#clearAuthorship").hide();
+        $("li[data-key='clearauthorship']").hide();
     }
     if(parameters["showHeadingBlock"] != "true")
     {
-        $("#heading-selection").hide();
+        $("li[data-key='heading-selection']").hide();
     }
     if(parameters["showImportExportBlock"] != "true")
     {
-        $("#importexportlink").hide();
+        $("li[data-key='import_export']").hide();
+    } else {
+        $("li[data-key='import_export']").show();
     }
     if(parameters["showTimelineBlock"] != "true")
     {
-        $("#timesliderlink").hide();
-        $("#revisionlink").hide();
+        $("li[data-key='showTimeSlider']").hide();
+        $("li[data-key='revisionlink']").hide();
+    } else {
+        $("li[data-key='showTimeSlider']").show();
     }
 }
 
