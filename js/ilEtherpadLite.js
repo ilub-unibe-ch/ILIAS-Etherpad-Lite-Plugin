@@ -9,6 +9,7 @@
     /** "Private" variables **/
     var fullscreenPad = false;
     var height = 0;
+    var extraForChatVisibility = 300;
 
     /** "Public" functions **/
     this.toggleFullscreen = function () {
@@ -20,7 +21,7 @@
             height = $(window).height();
         }
         else {
-            height = $(window).height() - ($("#fsxMainHeader").height() + $("div.il_Header").height() + $("div.ilLocator.xsmall").height()+150);
+            height = $(window).height() - ($("#fsxMainHeader").height() + $("div.il_Header").height() + $("div.ilLocator.xsmall").height()+extraForChatVisibility);
         }
         repaintPad();
     }
