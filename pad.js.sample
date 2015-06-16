@@ -16,55 +16,91 @@
     /** Get rid of error in view if language is german **/
     $("#mycolorpickersave").css({"padding":"2px","min-width":"70px"});
     $("#mycolorpickercancel").css({"padding":"2px","min-width":"70px"});
+	
+	/** Add classes for data-key fields **/
+	$( "li[data-key='bold']" ).addClass("bold");
+    
+	$( "li[data-key='italic']" ).addClass("italic");
+    
+	$( "li[data-key='underline']" ).addClass("underline");
+    
+	$( "li[data-key='strikethrough']" ).addClass("strikethrough");
+    
+	$( "li[data-key='insertorderedlist']" ).addClass("insertorderedlist");
+    
+	$( "li[data-key='insertunorderedlist']" ).addClass("insertunorderedlist");
+   
+	$( "li[data-key='indent']" ).addClass("indent");
+    
+	$( "li[data-key='outdent']" ).addClass("outdent");
+    
+	$( "li[data-key='undo']" ).addClass("undo");
+    
+	$( "li[data-key='redo']" ).addClass("redo");
+    
+	$( "li[data-key='clearauthorship']" ).addClass("clearauthorship");
+   
+	$( "li[data-key='import_export']" ).addClass("import_export");
+    
+	$( "li[data-key='showTimeSlider']" ).addClass("showTimeSlider");
+    
+	$( "li[data-key='savedRevision']" ).addClass("savedRevision");
+    
+	$( "li[data-key='embed']" ).addClass("embed");
+    
+	$( "li[data-key='settings']" ).addClass("settings");
+    
+	$( "#myusernameedit" ).prop('readonly', true);
+
+
+
+
+
     /** Always hide Button for embedLinks (direct Link in Ilias should be used instaed) **/
-    $("li[data-key='embed']").hide();
+    $(".embed").hide();
     /** Hide Settings Button (Settings are made in Ilias with tab settings) **/
-    $("li[data-key='settings']").hide();
+    $(".settings").hide();
     /** Hide export doku wiki (comment this out if this is wanted) **/
-    $("li[data-key='import_export']").hide();
-    $("li[data-key='import_export']").children().removeClass("grouped-left");
-    $("li[data-key='showTimeSlider']").children().removeClass("grouped-middle").addClass("grouped-left");
+    $("#exportdokuwikia").hide();
+    $(".import_export a").removeClass("grouped-left");
+    $(".showTimeSlider a").removeClass("grouped-middle").addClass("grouped-left");
     $("li[data-key='import_export']").after("<li class='separator'></li><li class='separator'></li>");
 
     if(parameters["showStyleBlock"] != "true")
     {
-        $("li[data-key='bold']").hide();
-        $("li[data-key='italic']").hide();
-        $("li[data-key='underline']").hide();
-        $("li[data-key='strikethrough']").hide();
+        $(".bold").hide();
+        $(".italic").hide();
+        $(".underline").hide();
+        $(".strikethrough").hide();
     }
     if(parameters["showListBlock"] != "true")
     {
-        $("li[data-key='insertorderedlist']").hide();
-        $("li[data-key='insertunorderedlist']").hide();
-        $("li[data-key='indent']").hide();
-        $("li[data-key='outdent']").hide();
+        $(".insertorderedlist").hide();
+        $(".insertunorderedlist").hide();
+        $(".indent").hide();
+        $(".outdent").hide();
     }
     if(parameters["showRedoBlock"] != "true")
     {
-        $("li[data-key='undo']").hide();
-        $("li[data-key='redo']").hide();
+        $(".undo").hide();
+        $(".redo").hide();
     }
     if(parameters["showColorBlock"] != "true")
     {
-        $("li[data-key='clearauthorship']").hide();
+        $(".clearauthorship").hide();
     }
     if(parameters["showHeadingBlock"] != "true")
     {
-        $("li[data-key='heading-selection']").hide();
+        $("#heading-selection").hide();
     }
     if(parameters["showImportExportBlock"] != "true")
     {
-        $("li[data-key='import_export']").hide();
-    } else {
-        $("li[data-key='import_export']").show();
+        $(".import_export").hide();
     }
     if(parameters["showTimelineBlock"] != "true")
     {
-        $("li[data-key='showTimeSlider']").hide();
-        $("li[data-key='revisionlink']").hide();
-    } else {
-        $("li[data-key='showTimeSlider']").show();
+        $(".showTimeSlider").hide();
+        $(".savedRevision").hide();
     }
 }
 
