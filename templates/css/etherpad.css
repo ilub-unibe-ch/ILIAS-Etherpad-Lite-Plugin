@@ -15,7 +15,8 @@
 }
 .etherpad-liteFullscreen
 {
-    position:absolute;
+    position:fixed;
+    z-index: 10000;
     background-color:#f7f7f7;
 }
 .etherpad-liteRegular
