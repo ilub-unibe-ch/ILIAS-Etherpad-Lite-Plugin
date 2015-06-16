@@ -1,0 +1,6 @@
+/*
+* Do not show settings while displaying timeline (needed in latest version of etherpadlite)
+*/
+li[data-key='settings']{
+	display: none;
+}
