@@ -52,10 +52,6 @@
     
 	$( "#myusernameedit" ).prop('readonly', true);
 
-
-
-
-
     /** Always hide Button for embedLinks (direct Link in Ilias should be used instaed) **/
     $(".embed").hide();
     /** Hide Settings Button (Settings are made in Ilias with tab settings) **/
