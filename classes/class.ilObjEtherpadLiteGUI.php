@@ -60,6 +60,7 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
      */
     function performCommand($cmd)
     {
+        $this->setTitleAndDescription();
         switch ($cmd)
         {
             case "editProperties": // list all commands that need write permission here
