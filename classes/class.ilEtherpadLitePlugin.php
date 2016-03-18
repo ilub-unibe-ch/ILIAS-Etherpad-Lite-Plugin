@@ -15,5 +15,12 @@ class ilEtherpadLitePlugin extends ilRepositoryObjectPlugin
 	{
 		return "EtherpadLite";
 	}
+
+    /**
+     * For Now: stub method that must be implemented
+     */
+    protected function uninstallCustom() {
+        return;
+    }
 }
 ?>
