@@ -12,7 +12,13 @@ include_once("./Services/Repository/classes/class.ilRepositoryObjectPlugin.php")
 class ilEtherpadLitePlugin extends ilRepositoryObjectPlugin
 {
 
-	protected function uninstallCustom() {
+    function getPluginName()
+    {
+        return "EtherpadLite";
+    }
+
+
+    protected function uninstallCustom() {
                 global $ilDB;
 
 				// removes plugin tables if they exist                
@@ -21,18 +27,6 @@ class ilEtherpadLitePlugin extends ilRepositoryObjectPlugin
                 	
                 if($ilDB->tableExists('rep_robj_xpdl_adm_set'))
                 	$ilDB->dropTable('rep_robj_xpdl_adm_set');
-    }
-
-	function getPluginName()
-	{
-		return "EtherpadLite";
-	}
-
-    /**
-     * For Now: stub method that must be implemented
-     */
-    protected function uninstallCustom() {
-        return;
     }
 }
 ?>
