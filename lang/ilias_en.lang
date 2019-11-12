@@ -152,3 +152,5 @@ default_show_controls_default_show_timeline#:#Show timeline by default.
 info_default_show_timeline#:#Enable or disable timeline for all Etherpad objects by default.
 conf_show_controls_conf_show_timeline#:#Allow individual display of timeline
 info_conf_show_timeline#:#When activated it is possible to enable or disable the timeline for each individual Etherpad.
+
+info_internet_explorer#:#<h3>You are using an outdated browser.</h3> <p>Etherpad is not available for IE11. Please use a different browser.</p>

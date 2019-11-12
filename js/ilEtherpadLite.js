@@ -25,8 +25,19 @@
         repaintPad();
     }
 
+    this.handleIE=function()
+    {
+		var isIE = /*@cc_on!@*/false || !!document.documentMode;
+		if (isIE){
+			var div = document.createElement("div");
+			div.className="ieInfo";
+			div.innerHTML = "<h3>Sie nutzen einen veralteten Browser.</h3><p> Etherpad ist für IE11 nicht verfügbar. Bitte wechseln Sie zu einem anderen Browser.</p>";
+			document.getElementById("etherpad-lite").appendChild(div);
+		}
+    }
     /** Constructor actions **/
     this.resizePad();
+    this.handleIE();
     $("#leaveFullscreenPad").hide();
 
     /** "Private" functions **/
