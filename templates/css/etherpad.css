@@ -62,13 +62,12 @@ img.etherpad-FullScreen-Leave {
 	height: 100%;
 	margin: 26px 15px 26px 15px;
 	background: #f0f0f0;
-	color:#a5a5a5;
+	color:#404040;
 	font-size: 20px;
 	border: 1px solid #a5a5a5;
 	text-align:center;
 }
 .ieInfo h3  {
 	margin-top:100px;
-	color:#a5a5a5;
 }
 
