@@ -36,6 +36,29 @@ require_once './Customizing/global/plugins/Services/Repository/RepositoryObject/
 */
 class ilObjEtherpadLite extends ilObjectPlugin
 {
+
+    protected $showTimeline;
+    protected $adminSettings;
+    protected $ReadOnly;
+    protected $online;
+    protected $etherpadlite_id;
+    protected $epadlconnect;
+    protected $epadlgroupmapper;
+    protected $epadlusermapper;
+    protected $showChat;
+    protected $lineNumbers;
+    protected $monospaceFont;
+    protected $showColors;
+    protected $showStyle;
+    protected $showRedo;
+    protected $showControls;
+    protected $showColoring;
+    protected $showHeading;
+    protected $showImportExport;
+    protected $oldEtherpad;
+    protected $EtherpadText;
+    protected $ReadOnlyID;
+
 	/**
 	* Constructor
 	*
@@ -425,7 +448,9 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowChat($a_val)
     {
-        $this->showChat = $a_val;
+        if(!empty($_val)) {
+            $this->showChat = $a_val;
+        }
     }
 
     /**
@@ -521,7 +546,9 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowControls($a_val)
     {
-        $this->showControls = $a_val;
+        if(!empty($_val)) {
+            $this->showControls = $a_val;
+        }
     }
 
     /**
@@ -545,7 +572,9 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowStyle($a_val)
     {
-        $this->showStyle = $a_val;
+        if(!empty($_val)) {
+            $this->showStyle = $a_val;
+        }
     }
 
     /**
@@ -569,7 +598,9 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowList($a_val)
     {
-        $this->showList = $a_val;
+        if(!empty($_val)) {
+            $this->showList = $a_val;
+        }
     }
 
     /**
@@ -593,8 +624,9 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowRedo($a_val)
     {
-
-        $this->showRedo = $a_val;
+        if(!empty($_val)) {
+            $this->showRedo = $a_val;
+        }
     }
 
     /**
@@ -618,7 +650,9 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowColoring($a_val)
     {
-        $this->showColoring = $a_val;
+        if(!empty($_val)) {
+            $this->showColoring = $a_val;
+        }
     }
 
     /**
@@ -642,7 +676,9 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowHeading($a_val)
     {
-        $this->showHeading = $a_val;
+        if(!empty($_val)) {
+            $this->showHeading = $a_val;
+        }
     }
 
     /**
@@ -666,7 +702,9 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowImportExport($a_val)
     {
-        $this->showImportExport = $a_val;
+        if(!empty($_val)) {
+            $this->showImportExport = $a_val;
+        }
     }
 
     /**
@@ -690,7 +728,9 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowTimeline($a_val)
     {
-        $this->showTimeline = $a_val;
+        if(!empty($_val)) {
+            $this->showTimeline = $a_val;
+        }
     }
 
     /**
