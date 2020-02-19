@@ -448,7 +448,7 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowChat($a_val)
     {
-        if(!empty($_val)) {
+        if(is_null($a_val)) {
             $this->showChat = $a_val;
         }
     }
@@ -546,7 +546,7 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowControls($a_val)
     {
-        if(!empty($_val)) {
+        if(is_null($a_val)) {
             $this->showControls = $a_val;
         }
     }
@@ -572,7 +572,7 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowStyle($a_val)
     {
-        if(!empty($_val)) {
+        if(is_null($a_val)) {
             $this->showStyle = $a_val;
         }
     }
@@ -598,7 +598,7 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowList($a_val)
     {
-        if(!empty($_val)) {
+        if(is_null($a_val)) {
             $this->showList = $a_val;
         }
     }
@@ -624,7 +624,7 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowRedo($a_val)
     {
-        if(!empty($_val)) {
+        if(is_null($a_val)) {
             $this->showRedo = $a_val;
         }
     }
@@ -650,7 +650,7 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowColoring($a_val)
     {
-        if(!empty($_val)) {
+        if(is_null($a_val)) {
             $this->showColoring = $a_val;
         }
     }
@@ -676,7 +676,7 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowHeading($a_val)
     {
-        if(!empty($_val)) {
+        if(is_null($a_val)) {
             $this->showHeading = $a_val;
         }
     }
@@ -702,7 +702,7 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowImportExport($a_val)
     {
-        if(!empty($_val)) {
+        if(is_null($a_val)) {
             $this->showImportExport = $a_val;
         }
     }
@@ -728,7 +728,7 @@ class ilObjEtherpadLite extends ilObjectPlugin
      */
     public function setShowTimeline($a_val)
     {
-        if(!empty($_val)) {
+        if(is_null($a_val)) {
             $this->showTimeline = $a_val;
         }
     }
