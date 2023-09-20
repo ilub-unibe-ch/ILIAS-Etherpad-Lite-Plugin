@@ -1,7 +1,5 @@
 <?php
 
-include_once("./Services/Component/classes/class.ilPluginConfigGUI.php");
-
 /**
  * EtherpadLite configuration user interface class
  *
@@ -9,6 +7,8 @@ include_once("./Services/Component/classes/class.ilPluginConfigGUI.php");
  * @author  Timon Amstutz <timon.amstutz@ilub.unibe.ch>
  * @author	Jan Rocho <jan.rocho@fh-dortmund.de>
  * @version $Id$
+ *
+ *  @ilCtrl_IsCalledBy ilEtherpadLiteConfigGUI: ilObjComponentSettingsGUI
  *
  */
 class ilEtherpadLiteConfigGUI extends ilPluginConfigGUI
@@ -75,7 +75,7 @@ class ilEtherpadLiteConfigGUI extends ilPluginConfigGUI
     /**
      * Handles all commmands, default is "configure"
      */
-    function performCommand($cmd)
+    function performCommand(string $cmd): void
     {
         switch($cmd)
         {
@@ -92,7 +92,9 @@ class ilEtherpadLiteConfigGUI extends ilPluginConfigGUI
      */
     function configure()
     {
-        global $tpl;
+        global $DIC;
+        
+        $tpl = $DIC['tpl'];
 
         $this->initConfigurationForm();
         $this->getValues();
@@ -126,7 +128,10 @@ class ilEtherpadLiteConfigGUI extends ilPluginConfigGUI
      */
     public function initConfigurationForm()
     {
-        global $lng, $ilCtrl;
+        global $DIC;
+        
+        $lng = $DIC['lng'];
+        $ilCtrl = $DIC['ilCtrl'];
 
         include_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/EtherpadLite/classes/class.ilEtherpadLiteConfig.php");
         $this->object = new ilEtherpadLiteConfig();
@@ -176,7 +181,10 @@ class ilEtherpadLiteConfigGUI extends ilPluginConfigGUI
      */
     public function save()
     {
-        global $tpl, $ilCtrl;
+        global $DIC;
+        
+        $tpl = $DIC['tpl'];
+        $ilCtrl = $DIC['ilCtrl'];
 
         $this->initConfigurationForm();
         if($this->form->checkInput())
@@ -207,5 +215,3 @@ class ilEtherpadLiteConfigGUI extends ilPluginConfigGUI
     }
 
 }
-
-?>

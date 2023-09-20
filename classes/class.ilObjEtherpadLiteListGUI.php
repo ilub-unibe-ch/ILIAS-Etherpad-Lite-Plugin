@@ -21,14 +21,12 @@
 	+-----------------------------------------------------------------------------+
 */
 
-include_once "./Services/Repository/classes/class.ilObjectPluginListGUI.php";
-
 /**
 * ListGUI implementation for EtherpadLite object plugin. This one
 * handles the presentation in container items (categories, courses, ...)
 * together with the corresponfing ...Access class.
 *
-* @author 		Jan Rocho <jan@rocho.eu>
+* @author 		Jan Rocho <jan.rocho@fh-dortmund.de>
 */
 class ilObjEtherpadLiteListGUI extends ilObjectPluginListGUI
 {
@@ -39,12 +37,15 @@ class ilObjEtherpadLiteListGUI extends ilObjectPluginListGUI
 	function initType()
 	{
 		$this->setType("xpdl");
+		// fau: copyPad - enable copy in list
+		$this->copy_enabled = true;
+		// fau.
 	}
 	
 	/**
 	* Get name of gui class handling the commands
 	*/
-	function getGuiClass()
+	public function getGuiClass(): string
 	{
 		return "ilObjEtherpadLiteGUI";
 	}
@@ -52,7 +53,7 @@ class ilObjEtherpadLiteListGUI extends ilObjectPluginListGUI
 	/**
 	* Get commands
 	*/
-	function initCommands()
+	public function initCommands(): array
 	{
 		return array
 		(
@@ -76,13 +77,15 @@ class ilObjEtherpadLiteListGUI extends ilObjectPluginListGUI
 	*						"property" (string) => property name
 	*						"value" (string) => property value
 	*/
-	function getProperties()
+	public function getProperties(): array
 	{
-		global $lng, $ilUser;
+		global $DIC;
+		
+		$lng = $DIC['lng'];
+		$ilUser = $DIC['ilUser'];
 
 		$props = array();
-		
-		$this->plugin->includeClass("class.ilObjEtherpadLiteAccess.php");
+
 		if (!ilObjEtherpadLiteAccess::checkOnline($this->obj_id))
 		{
 			$props[] = array("alert" => true, "property" => $this->txt("status"),
@@ -92,4 +95,3 @@ class ilObjEtherpadLiteListGUI extends ilObjectPluginListGUI
 		return $props;
 	}
 }
-?>

@@ -21,9 +21,6 @@
 	+-----------------------------------------------------------------------------+
 */
 
-
-include_once("./Services/Repository/classes/class.ilObjectPluginGUI.php");
-
 /**
 * User Interface class for EtherpadLite repository object.
 * 
@@ -42,7 +39,7 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
     /**
      * Initialisation
      */
-    protected function afterConstructor()
+    protected function afterConstructor(): void
     {
 
     }
@@ -50,7 +47,7 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
     /**
      * Get type.
      */
-    final function getType()
+    final public function getType(): string
     {
         return "xpdl";
     }
@@ -58,31 +55,28 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
     /**
      * Handles all commmands of this class, centralizes permission checks
      */
-    function performCommand($cmd)
+    public function performCommand(string $cmd): void
     {
         $this->setTitleAndDescription();
         switch ($cmd)
         {
             case "editProperties": // list all commands that need write permission here
             case "updateProperties":
-                //case "...":
                 $this->checkPermission("write");
                 $this->$cmd();
                 break;
-
             case "showContent": // list all commands that need read permission here
-                //case "...":
-                //case "...":
-                $this->checkPermission("read");
-                $this->$cmd();
-                break;
+			default:
+				$this->checkPermission("read");
+				$this->$cmd();
+				break;
         }
     }
 
     /**
      * After object has been created -> jump to this command
      */
-    function getAfterCreationCmd()
+    public function getAfterCreationCmd(): string
     {
         return "editProperties";
     }
@@ -90,7 +84,7 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
     /**
      * Get standard command
      */
-    function getStandardCmd()
+    public function getStandardCmd(): string
     {
         return "showContent";
     }
@@ -102,9 +96,13 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
     /**
      * Set tabs
      */
-    function setTabs()
+    protected function setTabs(): void
     {
-        global $ilTabs, $ilCtrl, $ilAccess;
+        global $DIC;
+        
+        $ilTabs = $DIC['ilTabs'];
+        $ilCtrl = $DIC['ilCtrl'];
+        $ilAccess = $DIC['ilAccess'];
 
         // tab for the "show content" command
         if ($ilAccess->checkAccess("read", "", $this->object->getRefId()))
@@ -135,7 +133,10 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
      */
     function editProperties()
     {
-        global $tpl, $ilTabs;
+        global $DIC;
+        
+        $tpl = $DIC['tpl'];
+        $ilTabs = $DIC['ilTabs'];
 
         $ilTabs->activateTab("properties");
         $this->initPropertiesForm();
@@ -151,7 +152,9 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
     public function initPropertiesForm()
     {
 
-        global $ilCtrl;
+        global $DIC;
+        
+        $ilCtrl = $DIC['ilCtrl'];
 
         include_once("Services/Form/classes/class.ilPropertyFormGUI.php");
         $this->form = new ilPropertyFormGUI();
@@ -304,7 +307,7 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
     function getPropertiesValues()
     {
         $values["title"]    = $this->object->getTitle();
-        $values["desc"]     = $this->object->getDescription();
+        $values["desc"]     = $this->object->getLongDescription();
         $values["online"]   = $this->object->getOnline();
         $values["epadl_id"] = $this->object->getEtherpadLiteID();
         $values["show_chat"]= $this->object->getShowChat();
@@ -329,7 +332,11 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
      */
     public function updateProperties()
     {
-        global $tpl, $lng, $ilCtrl;
+        global $DIC;
+        
+        $tpl = $DIC['tpl'];
+        $lng = $DIC['lng'];
+        $ilCtrl = $DIC['ilCtrl'];
 
         $this->initPropertiesForm();
         if ($this->form->checkInput())
@@ -353,7 +360,7 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
             $this->object->setReadOnly($this->form->getInput("read_only"));
 
             $this->object->update();
-            ilUtil::sendSuccess($lng->txt("msg_obj_modified"), true);
+			$this->tpl->setOnScreenMessage("success", $this->plugin->txt("msg_obj_modified"), true);
             $ilCtrl->redirect($this, "editProperties");
         }
 
@@ -370,7 +377,13 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
      */
     function showContent()
     {
-        global $tpl, $ilTabs, $ilUser, $lng;
+        global $DIC;
+        
+        $tpl = $DIC['tpl'];
+        $ilTabs = $DIC['ilTabs'];
+        $ilUser = $DIC['ilUser'];
+        $lng = $DIC['lng'];
+        
         try
         {
 
@@ -380,13 +393,12 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
             $tpl->addJavaScript("./Customizing/global/plugins/Services/Repository/RepositoryObject/EtherpadLite/js/ilEtherpadLite.js");
 
             // Show Elements depending on settings in the administration of the plugin
-            include_once("./Customizing/global/plugins/Services/Repository/RepositoryObject/EtherpadLite/classes/class.ilEtherpadLiteConfig.php");
             $this->adminSettings = new ilEtherpadLiteConfig();
 
 			if($this->object->getReadOnly()) 
 			{ 
-				$padID = $this->object->getReadOnlyID(); 
-				ilUtil::sendInfo($this->txt("read_only_notice"), true);
+				$padID = $this->object->getReadOnlyID();
+				$this->tpl->setOnScreenMessage("info", $this->txt("read_only_notice"), true);
 				
 				if($this->adminSettings->getValue("allow_read_only_readonly_disable_export"))
 					$this->object->setShowImportExport(false);
@@ -427,10 +439,9 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
 
 
             // Add Permalink
-            include_once './Services/PermanentLink/classes/class.ilPermanentLinkGUI.php';
-            $permalink = new ilPermanentLinkGUI('xpdl', $this->object->getRefId());
-            $this->tpl->setVariable('PRMLINK', $permalink->getHTML());
-        } catch (Exception $e)
+            $tpl->setPermanentLink('xpdl', $this->ref_id);
+            
+        } catch (\Firebase\JWT\ExpiredException $e)
         {
             $ilTabs->activateTab("content");
             $tpl->setContent($this->txt("load_error")." ".$e->getMessage());
@@ -440,4 +451,3 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
     }
 
 }
-?>

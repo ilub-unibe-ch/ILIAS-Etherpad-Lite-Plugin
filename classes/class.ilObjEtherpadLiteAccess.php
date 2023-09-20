@@ -21,12 +21,10 @@
 	+-----------------------------------------------------------------------------+
 */
 
-include_once("./Services/Repository/classes/class.ilObjectPluginAccess.php");
-
 /**
 * Access/Condition checking for EtherpadLite object
 *
-* @author 		Jan Rocho <jan@rocho.eu>
+* @author 		Jan Rocho <jan.rocho@fh-dortmund.de>
 * @version $Id$
 */
 class ilObjEtherpadLiteAccess extends ilObjectPluginAccess
@@ -47,9 +45,12 @@ class ilObjEtherpadLiteAccess extends ilObjectPluginAccess
 	*
 	* @return	boolean		true, if everything is ok
 	*/
-	function _checkAccess($a_cmd, $a_permission, $a_ref_id, $a_obj_id, $a_user_id = "")
+	public function _checkAccess(string $a_cmd, string $a_permission, int $a_ref_id, int $a_obj_id, ?int $a_user_id = null): bool
 	{
-		global $ilUser, $ilAccess;
+		global $DIC;
+		
+		$ilUser = $DIC['ilUser'];
+		$ilAccess = $DIC['ilAccess'];
 
 		if ($a_user_id == "")
 		{
@@ -76,7 +77,8 @@ class ilObjEtherpadLiteAccess extends ilObjectPluginAccess
 	*/
 	static function checkOnline($a_id)
 	{
-		global $ilDB;
+		global $DIC;
+		$ilDB = $DIC['ilDB'];
 		
 		$set = $ilDB->query("SELECT is_online FROM rep_robj_xpdl_data ".
 			" WHERE id = ".$ilDB->quote($a_id, "integer")
@@ -86,5 +88,3 @@ class ilObjEtherpadLiteAccess extends ilObjectPluginAccess
 	}
 	
 }
-
-?>
