@@ -360,7 +360,7 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
             $this->object->setReadOnly($this->form->getInput("read_only"));
 
             $this->object->update();
-			$this->tpl->setOnScreenMessage("success", $this->plugin->txt("msg_obj_modified"), true);
+			$this->tpl->setOnScreenMessage("success", $lng->txt("msg_obj_modified"), true);
             $ilCtrl->redirect($this, "editProperties");
         }
 
