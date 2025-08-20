@@ -44,14 +44,14 @@ class ilObjEtherpadLite extends ilObjectPlugin
     private EtherpadLiteClient $epadlconnect;
     private mixed $epadlusermapper;
     private bool $showRedo;
-    private bool $showImportExport;
-    private bool $showHeading;
-    private bool $lineNumbers;
-    private bool $monospaceFont;
-    private bool $showColors;
-    private bool $showControls;
-    private bool $showStyle;
-    private bool $showList;
+    private ?bool $showImportExport;
+    private ?bool $showHeading;
+    private ?bool $lineNumbers;
+    private ?bool $monospaceFont;
+    private ?bool $showColors;
+    private ?bool $showControls;
+    private ?bool $showStyle;
+    private ?bool $showList;
     private mixed $epadlgroupmapper;
 
     /**
