@@ -43,7 +43,7 @@ class ilObjEtherpadLite extends ilObjectPlugin
     private $etherpadlite_id;
     private EtherpadLiteClient $epadlconnect;
     private mixed $epadlusermapper;
-    private bool $showRedo;
+    private ?bool $showRedo;
     private ?bool $showImportExport;
     private ?bool $showHeading;
     private ?bool $lineNumbers;
