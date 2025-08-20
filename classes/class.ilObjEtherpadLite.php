@@ -36,9 +36,9 @@ class ilObjEtherpadLite extends ilObjectPlugin
     private bool $ReadOnly;
     private string $EtherpadText;
     private bool $oldEtherpad;
-    private bool $showTimeline;
-    private bool $showChat;
-    private bool $showColoring;
+    private ?bool $showTimeline;
+    private ?bool $showChat;
+    private ?bool $showColoring;
     private $online;
     private $etherpadlite_id;
     private EtherpadLiteClient $epadlconnect;
