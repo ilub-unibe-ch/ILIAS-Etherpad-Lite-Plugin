@@ -3,7 +3,7 @@
 //
 
 <!-- language file start -->
-obj_xpdl#:#Etherpad
+obj_xpdl#:#Texteditor (Etherpad)
 objs_xpdl#:#Etherpads
 obj_xpdl_duplicate#:#Kopieren
 objs_xpdl_duplicate#:#Etherpad kopieren
