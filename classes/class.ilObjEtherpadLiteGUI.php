@@ -74,6 +74,7 @@ class ilObjEtherpadLiteGUI extends ilObjectPluginGUI
                 $this->$cmd();
                 break;
         }
+        $this->addHeaderAction();
     }
 
     /**
