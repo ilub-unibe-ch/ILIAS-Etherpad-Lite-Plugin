@@ -1,9 +1,9 @@
-// 
+//
 // German Language File for Etherpad LiteObject Plugin
 //
 
 <!-- language file start -->
-obj_xpdl#:#Etherpad
+obj_xpdl#:#Texteditor (Etherpad)
 objs_xpdl#:#Etherpads
 obj_xpdl_duplicate#:#Kopieren
 objs_xpdl_duplicate#:#Etherpad kopieren
@@ -154,4 +154,4 @@ conf_show_controls_conf_show_timeline#:#Steuerelemente füt Timeline konfigurier
 info_conf_show_timeline#:#In den Etherpad-Einstellungen besteht die Möglichkeit, die Timeline-Steuerelemente für jedes Etherpad individuell zu aktivieren oder zu deaktivieren.
 
 connection_settings#:#Verbindung
-pad_settings#:#Darstellung
+pad_settings#:#Darstellung

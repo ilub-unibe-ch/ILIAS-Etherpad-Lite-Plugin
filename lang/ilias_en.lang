@@ -1,10 +1,10 @@
-// 
+//
 // English Language File for Etherpad LiteObject Plugin
 // @author Chris Potter
 //
 
 <!-- language file start -->
-obj_xpdl#:#Etherpad
+obj_xpdl#:#Texteditor (Etherpad)
 objs_xpdl#:#Etherpad
 obj_xpdl_duplicate#:#Copy
 objs_xpdl_duplicate#:#Copy Etherpad
